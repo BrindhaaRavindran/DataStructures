@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char str[100], ss[100], a[100], d[100];
+    char ch;
+    int i=0, j=0, k=0, l=0, ans=0, m;
+    printf("Enter a string: ");
+    scanf("%s",str);
+    while((ch=str[i])!='\0')
+    {
+        if((ch>=48)&&(ch<=57))
+        {
+           d[j]=ch;
+           j++;
+        }
+        else if(((ch>=65)&&(ch<=90))||((ch>=97)&&(ch<=122)))
+        {
+           a[k]=ch;
+           k++;
+        }
+        else
+        {
+            if(ch==32)
+            {
+                i++;
+                continue;
+            }
+            ss[l]=ch;
+            l++;
+        }
+        i++;
+    }
+     
+    if(j!=0)
+    {
+        ans=d[0];
+        printf("d[0] = %d\n",ans);
+        for(i=1;i<j;i++)
+        {
+            for(m=0;m<l;m++)
+            {
+                if(ss[m]== '+')
+                {
+                    ans=+d[i];
+                    printf(" ans = %d\n",ans);
+                }
+                else if(ss[m]== '-')
+                {
+                    ans=-d[i];
+                }
+                else if(ss[m]== '*')
+                    ans=ans*d[i];
+                else if(ss[m]== '/')
+                    ans=ans/d[i];
+                else
+                    continue;
+            }
+        }
+    }
+    printf("ANSWER = %d",ans);
+    return 0;
+}
